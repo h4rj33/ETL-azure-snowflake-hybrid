@@ -1,6 +1,6 @@
 #  Modular ETL Pipeline — Azure Blob → Snowflake & Snowflake Parallel Ingestion!!!
 
-This repository contains a production-style, modular ETL framework that ingests:
+This repository contains a robust ETL framework that ingests:
 
 - **Azure Blob Storage → Snowflake (CSV ingestion)**
 - **Snowflake Source → Snowflake Target migration**
@@ -98,7 +98,7 @@ SF_TARGET_DATABASE=
 SF_TARGET_SCHEMA=
 SF_TARGET_ROLE=
 
-LOG_TABLE=LOG_DB.LOG_SCHEMA.DATA_INGESTION_LOGS
+LOG_TABLE=ETL_DB.ETL_SCHEMA.INGESTION_LOGS
 ```
 
 Copy `.env.example` → `.env` and populate.
@@ -126,10 +126,10 @@ python src/main.py
 ```
 ETL SUMMARY — 12 Feb 2025 09:48PM
 ────────────────────────────────────────
-TABLE_1        SRC=10XXXX  FINAL=10XXX   ✓
+TABLE_1         SRC=10XXXX  FINAL=10XXX   ✓
 TABLE_2         SRC=YYYY   FINAL=YYYY    ✓
-PAYMENT_LOGS         SRC=0      FINAL=0       skipped
-FAILED_TABLE         SRC=1500   FINAL=1487    ⚠ mismatch
+TABLE_3         SRC=0      FINAL=0       skipped
+TABLE_4         SRC=1500   FINAL=1487    ⚠ mismatch
 ```
 
 ---
