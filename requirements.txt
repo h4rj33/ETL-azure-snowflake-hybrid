@@ -1,0 +1,6 @@
+pandas
+python-dotenv
+requests
+snowflake-connector-python
+azure-storage-blob
+sqlalchemy
