@@ -15,7 +15,7 @@ def run_azure_ingestion():
         files=AZURE_FILES
     else:
         container=service.get_container_client(AZURE_CONTAINER)
-        files=[b.name for b in container.list_blobs() if b.name.lower().endswith(".csv")]  # AUTO-DETECT INCLUDED
+        files=[b.name for b in container.list_blobs() if b.name.lower().endswith(".csv")]  
 
     for file in files:
         try:
@@ -36,7 +36,7 @@ def ingest_from_azure(blob_name):
         blob=service.get_blob_client(AZURE_CONTAINER,blob_name)
         df=pd.read_csv(io.BytesIO(blob.download_blob().readall()))
 
-        if df.columns[0]=="Prop_0":      # SAME HEADER FIX
+        if df.columns[0]=="Prop_0":   
             df.columns=df.iloc[0];df=df[1:]
 
         df["ETL_INSERT_DATE"]=datetime.now(UTC).strftime("%Y-%m-%d")
